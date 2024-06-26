@@ -26,7 +26,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-app-repo
-        IMAGE_TAG: v0.1
+        IMAGE_TAG: v_red
       run: |
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -42,13 +42,14 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-    - name: Build and push web app image to Amazon ECR (v0.2)
+    - name: Build and push web app image with lime color to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: my-app-repo
-        IMAGE_TAG: v0.2
+        ECR_REPOSITORY: my-app-repo-lime
+        IMAGE_TAG: v_lime
       run: |
         # Docker build
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_lime .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
 #
