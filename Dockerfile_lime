@@ -9,7 +9,7 @@ RUN set -xe \
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 EXPOSE 8080
-ENV APP_COLOR=red
+ENV APP_COLOR=lime
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
 
