@@ -22,7 +22,7 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
 
-    - name: Build and push web app image to Amazon ECR
+    - name: Build and push web app image with red color to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-app-repo
@@ -41,7 +41,7 @@ jobs:
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        
+
     - name: Build and push web app image with lime color to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -51,5 +51,3 @@ jobs:
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_lime .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
-#
